@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Hangman web - Jeu</title>
+        
+    <style>
+
+        .page {
+            background-image: url("/black-1072366_960_720.png");
+        }
+        .titre {
+            display: block;
+            font-size: 13px;
+        }
+        .hangman-title {
+            align-items: center;
+        }
+
+        .affichage {
+            display: block;
+            width: 600px;
+        }
+
+        .mot-a-trouver{
+            display: inline-block;
+            align-items: left;
+            /* background-color: rgb(227, 172, 172); */
+            vertical-align: top;
+            align-items: center;
+            /* border: 1px solid purple; */
+            margin-top: 65px;
+        }
+
+        .hangpos {
+            display: inline-block;
+            align-items: right;
+            /* background-color: rgb(178, 178, 224);
+            border: 1px solid blue; */
+            vertical-align: top;
+        }
+
+
+
+    </style>
+
+    </head>
+    <body>
+        <center>
+            <div class="page">
+                <div class="titre">
+                    <p class="titre-hangman">
+                        Hangman Web
+                    </p>
+                </div>
+
+                <div class="affichage">
+                    <div class="mot-a-trouver">
+                        <p class="mot">
+                            {{.MotATrouve}} 
+                        </p>
+                    </div>
+                    <div class="hangpos">
+                        <pre>
+                            {{range .Pos}}
+                            {{.}}{{end}}
+                        </pre> 
+                    </div>
+                </div>
+                <div class="mauvais-mot">
+                    <p>{{.Wrong}}</p>
+                </div>
+
+                <div class="lettres">
+                    <p>{{.Lettre}}</p>
+                </div>
+                <form action="/save/" method="post">
+
+                    <input class="enter-a-letter" type="text" name="letter" placeholder="Entrez une lettre" rows="1" cols="15" minlength="1" maxlength="15">
+    
+                    <!--<input class="boutton" type="submit" value="Soumettre">-->
+                </form>
+            </div>
+        </center>
+    </body>
+</html>

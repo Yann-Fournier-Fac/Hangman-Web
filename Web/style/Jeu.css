@@ -1,0 +1,19 @@
+.parent {
+    display: flex;
+    text-align: center;
+}
+
+.adeviner {
+    font-size: 13px;
+    display: inline;
+    align-content: center;
+}
+
+.position {
+    display: inline;
+    align-content: center;
+}
+
+.enter-a-letter {
+    display: block;
+}

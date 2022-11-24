@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman Web - Lose</title>
+</head>
+<body>
+    <p>Vous avez perdu</p>
+
+
+
+    <div class="mot-a-trouver">
+        <p class="mot">
+            Le mot était : {{.Mot}} 
+        </p>
+    </div>
+
+    <div>
+        <form action="/menu/">
+            <button>
+                Retourner au menu principale
+            </button>
+        </form>
+    </div>
+
+</body>
+</html>
