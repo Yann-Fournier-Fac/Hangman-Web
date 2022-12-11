@@ -2,30 +2,95 @@
 
 <html>
     <head>
-        <title>Hangman Niveau</title>
+        <title>Hangman web - Niveau</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+        <style>
+            * {
+                font-family: 'Silkscreen';
+            }
+            body{
+            position:absolute;
+            top:0px;
+            right:0px;
+            bottom:0px;
+            left:0px;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            flex-direction: column;
+            font-family: 'Silkscreen';
+        }
+         .button1 {
+            background: red;
+            color: #fff;
+            padding: 10px;
+            font-size: 50px;
+            border-radius: 25px;
+            transition: 500ms; 
+            font-family: 'Silkscreen', cursive;
+            padding: 15px;
+            border-style: dotted;
+            border-width: 10px; 
+        }
+        .button1:hover{
+             color: red;
+            border: red solid 1px;
+            background:#fff;
+            border-style: dashed;
+            border-width: 10px;
+            padding: 15px; 
+        }
+        .first_title{
+            transition: 500ms;
+            font-size: 80px;
+            border-width: 20px;
+            border-color: red;
+            border-style: dashed;
+            border-radius: 75px;
+            padding: 150px;
+            color: red 
+        }
+        .first_title:hover{
+             color:#fff;
+            border-color: #fff;
+            border-style:dotted; 
+        } 
+        
+        .buttonbox{
+            display: flex;
+            width: 100%;
+            justify-content: space-evenly;
+        }
+        .bg {
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+        }
+        
+        </style>
     </head>
 
     <body>
-        <center>
-            <h1>Hangman Web</h1>
+            <img class="bg" src="https://static.vecteezy.com/system/resources/previews/005/266/448/original/retro-futuristic-background-free-vector.jpg" alt="retro image background">
+            <h1 class="first_title">Hangman Web</h1>
 
+            <div class="buttonbox">
             <form action="/niv/" method="post">
-
-                <input class="boutton" type="submit" name="niveau" value="Niveau 1">
+                <input class="button1" type="submit" name="niveau" value="Niveau 1">
             </form>
-
-            <p></p>
             
-                
             <form action="/niv/" method="post">
-                <input class="boutton" type="submit" name="niveau" value="Niveau 2">
+                <input class="button1" type="submit" name="niveau" value="Niveau 2">
             </form>
 
-                <p></p>
-
             <form action="/niv/" method="post">
-                <input class="boutton" type="submit" name="niveau" value="Niveau 3">
+                <input class="button1" type="submit" name="niveau" value="Niveau 3">
             </form>
-        </center>
+            </div>
     </body>
 </html>

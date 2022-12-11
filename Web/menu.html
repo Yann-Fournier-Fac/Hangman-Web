@@ -3,14 +3,83 @@
 <html>
     <head>
         <title>Hangman web - Menu</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+
+        <style>
+            * {
+                font-family: 'Silkscreen';
+            }
+            body{
+                position:absolute;
+                top:0px;
+                right:0px;
+                bottom:0px;
+                left:0px;
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                flex-direction: column;
+                font-family: 'Silkscreen';
+            }
+            .bg {
+                position: fixed; 
+                top: 0; 
+                left: 0; 
+                min-width: 100%;
+                min-height: 100%;
+                z-index: -1;
+            }
+            .button1 {
+                background: red;
+                color: #fff;
+                padding: 10px;
+                font-size: 50px;
+                border-radius: 25px;
+                transition: 500ms; 
+                font-family: 'Silkscreen', cursive;
+                padding: 15px;
+                border-style: dotted;
+                border-width: 5px;
+            }
+            .button1:hover{
+                color: red;
+                border: red solid 1px;
+                background:#fff;
+                border-style: dashed;
+                border-width: 5px;
+                padding: 15px;
+            }
+            .first_title{
+                transition: 500ms;
+                font-size: 80px;
+                border-width: 20px;
+                border-color: red;
+                border-style: dotted;
+                border-radius: 75px;
+                padding: 150px;
+                color: red
+            }
+            .first_title:hover{
+                color:#fff;
+                border-color: red;
+                border-style: dashed;
+            }
+        </style>
     </head>
     <body>
-        <center>
-        <h1>Hangman Web</h1>
+        
+        <img class="bg" src="https://static.vecteezy.com/system/resources/previews/005/266/448/original/retro-futuristic-background-free-vector.jpg" alt="retro image background">
+        <h1 class="first_title">Hangman Web</h1>
+        <form action="/me/" method="post">
+            <input class="button1" type="submit" name="bouton" value="New Game" />
+        </form>
 
-        <a href ="/niveau/">  <!--/Jeu-->
-            New Game
-        </a> 
-        </center>
+        <form action="/niveau/" method="post">
+            <input class="button1" type="submit" name="bouton" value="Continuer une Sauvegarde">
+        </form>
+
+        
     </body>
 </html>

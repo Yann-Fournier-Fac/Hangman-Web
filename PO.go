@@ -1,5 +1,7 @@
 package hangman
 
+//import "net/http"
+
 type Hangman struct {
 	Mot          string
 	MotATrouve   string
@@ -11,3 +13,7 @@ type Hangman struct {
 	Affich       []string
 	Lettre       []string
 }
+
+// func (hang Hangman) ServeHTTP(r http.ResponseWriter, w *http.Request) {
+
+// }
