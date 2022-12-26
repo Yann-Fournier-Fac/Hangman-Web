@@ -33,7 +33,8 @@ func Objet() hangman.Hangman {
 }
 
 var Je = Objet()
-var Token int = 0
+
+//var Token int = 0
 
 func main() {
 
@@ -46,13 +47,14 @@ func main() {
 	http.HandleFunc("/niveau/", niveauHandler)
 	http.HandleFunc("/niv/", nivHandler)
 	http.HandleFunc("/jeu/", jeuHandler)
-	http.HandleFunc("/save/", saveHandler)
+	http.HandleFunc("/je/", jeHandler)
 	http.HandleFunc("/win/", winHandler)
 	http.HandleFunc("/lose/", loseHandler)
 
 	//CSS en static
 	//http.Handle("/", http.FileServer(http.Dir("/Web/style/")))
 	//http.Handle("/Web/style/", http.StripPrefix("/Web/style/", nil))
+
 	http.ListenAndServe(":8080", nil)
 
 }
@@ -69,7 +71,6 @@ func menuHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
-
 	//button := r.FormValue("boutton")
 	// if button == "New Game" {
 	// 	Token = 1
@@ -78,7 +79,6 @@ func menuHandler(w http.ResponseWriter, r *http.Request) {
 
 	//http.Redirect(w, r, "/menu/", http.StatusFound)
 	//http.Redirect(w, r, "/pas_acces/", http.StatusFound)
-
 }
 
 func meHandler(w http.ResponseWriter, r *http.Request) {
@@ -87,9 +87,10 @@ func meHandler(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/niveau/", http.StatusFound)
 	} else if button == "Continuer une Sauvegarde" {
 		fmt.Println("partie Restaurée")
-		// Reload les données
-		//http.Redirect(w, r, "/jeu/", http.StatusFound)
-		http.Redirect(w, r, "/niveau/", http.StatusFound)
+		Je = hangman.Lecture()
+		// Reload les données qui proviennent de la save puis faire un redirecte vers le jeu
+		http.Redirect(w, r, "/jeu/", http.StatusFound)
+		//http.Redirect(w, r, "/niveau/", http.StatusFound)
 	} else {
 		http.Redirect(w, r, "/menu/", http.StatusFound)
 	}
@@ -111,17 +112,17 @@ func nivHandler(w http.ResponseWriter, r *http.Request) {
 
 	if niveau[len(niveau)-1] == '1' {
 		Je.Mot = hangman.Findwords("words.txt")
-		Token = 2
+		//Token = 2
 		// fmt.Println(Je.Mot)
 
 	} else if niveau[len(niveau)-1] == '2' {
 		Je.Mot = hangman.Findwords("words2.txt")
-		Token = 2
+		//Token = 2
 		//fmt.Println(Je.Mot)
 
 	} else if niveau[len(niveau)-1] == '3' {
 		Je.Mot = hangman.Findwords("words3.txt")
-		Token = 2
+		//Token = 2
 		//fmt.Println(Je.Mot)
 	}
 
@@ -154,11 +155,15 @@ func jeuHandler(w http.ResponseWriter, r *http.Request) {
 	// }
 }
 
-func saveHandler(w http.ResponseWriter, r *http.Request) {
+func jeHandler(w http.ResponseWriter, r *http.Request) {
 	lettre := r.FormValue("letter")
 	if lettre == "Sauvegarder" {
 		fmt.Println("Partie Sauvegarder")
-		//hangman.Save(Je)
+		// Ecriture de la save
+		hangman.Ecriture(&Je)
+		// puis on reload les données
+		hangman.Reload(&Je)
+		// Et on revient au menu
 		http.Redirect(w, r, "/menu/", http.StatusFound)
 	} else {
 		hangman.Compa(lettre, &Je)
